@@ -1,3 +1,4 @@
+/* Global Styles */
 body {
   margin: 0;
   background: #8cc461;
@@ -15,10 +16,19 @@ body {
   position: relative;
 }
 
-/* header-section */
+.container2 {
+  height: 100dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
 
+/* Header Styles */
 .header {
-  /* flex: 1 1 auto; */
   width: 100%;
   height: 140px;
   display: flex;
@@ -27,6 +37,7 @@ body {
   position: absolute;
 }
 
+/* Game Element Container */
 .element-container {
   position: fixed;
   width: 800px;
@@ -93,6 +104,7 @@ body {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
+/* Line Animations */
 .line1 {
   width: 210px;
   position: absolute;
@@ -102,6 +114,7 @@ body {
   transform: rotate(0deg);
   transform-origin: left;
 }
+
 .line2 {
   width: 200px;
   position: absolute;
@@ -122,8 +135,7 @@ body {
   transform-origin: left;
 }
 
-/* footer section */
-
+/* Footer and Game Controls */
 .footer {
   display: flex;
   flex-direction: column;
@@ -148,15 +160,9 @@ body {
   bottom: 100px;
 }
 
-.blue {
-  background-color: blue;
-}
-.orange {
-  background-color: orange;
-}
-.purple {
-  background-color: purple;
-}
+.blue { background-color: blue; }
+.orange { background-color: orange; }
+.purple { background-color: purple; }
 
 .shape {
   height: 85px;
@@ -183,8 +189,7 @@ body {
   margin-left: 10px;
 }
 
-/* Rules box  */
-
+/* Rules Panel */
 .rules {
   height: 300px;
   width: 260px;
@@ -195,7 +200,7 @@ body {
   padding: 20px 10px;
   position: fixed;
   right: 50px;
-  bottom: 80px; /* place above the bottom buttons to avoid overlap */
+  bottom: 80px;
   z-index: 9999;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
@@ -218,6 +223,7 @@ ul li::before {
   list-style-position: inside;
 }
 
+/* Typography */
 .game-text {
   display: flex;
   justify-content: center;
@@ -226,9 +232,8 @@ ul li::before {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
-.hidden {
-  display: none;
-}
+/* Utility Classes */
+.hidden { display: none; }
 
 button {
   height: 40px;
@@ -241,9 +246,6 @@ button {
   cursor: pointer;
 }
 
-/* place Rules and NEXT at the bottom-right corner */
-/* place Rules and NEXT side-by-side at the bottom-right
-   NEXT will be to the right of Rules (NEXT at the extreme right) */
 #nextbtn,
 #btn {
   position: fixed;
@@ -251,13 +253,11 @@ button {
   z-index: 10000;
 }
 
-/* NEXT at extreme right, Rules sits left of it */
 #btn,
 #nextbtn {
   z-index: 10000;
 }
 
-/* NEXT sits to the right of Rules (NEXT at extreme right) */
 #nextbtn {
   position: fixed;
   right: 20px;
@@ -265,14 +265,12 @@ button {
   text-decoration: none;
 }
 
-/* Rules button sits left of NEXT */
 #btn {
   position: fixed;
   right: 120px;
   bottom: 20px;
 }
 
-/* when Rules is alone (NEXT hidden) place it at the extreme right */
 #btn.btn-alone {
   right: 20px !important;
 }
@@ -314,7 +312,7 @@ button {
   bottom: 400px;
   text-transform: uppercase;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  color:white;
+  color: white;
   font-weight: 1000;
 }
 
@@ -324,7 +322,7 @@ button {
   bottom: 400px;
   text-transform: uppercase;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  color:white;
+  color: white;
   font-weight: 1000;
 }
 
@@ -356,8 +354,7 @@ button {
   text-align: center;
 }
 
-/* gradient at winner's border effect  */
-
+/* Game Effects */
 .rounded-gradient-borders {
   width: 110px;
   height: 110px;
@@ -367,24 +364,14 @@ button {
     radial-gradient(circle at top left, #f00, #3020ff);
   background-origin: border-box;
   background-clip: content-box, border-box;
-  box-shadow: 0 0 40px 25px rgba(76, 175, 80, 0.7), 0 0 20px 10px rgba(76, 175, 80, 0.5), 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 0 40px 25px rgba(76, 175, 80, 0.7),
+    0 0 20px 10px rgba(76, 175, 80, 0.5), 0 10px 20px rgba(0, 0, 0, 0.19),
+    0 6px 6px rgba(0, 0, 0, 0.23);
   position: relative;
   z-index: 100;
 }
 
-/* second-page  */
-
-.container2 {
-  height: 100dvh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-}
-
+/* Game Result Screens */
 .cup {
   position: relative;
   bottom: 0;
@@ -468,4 +455,84 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 500px) {
+  .container {
+    margin-top: 24px;
+  }
+
+  .element-container {
+    width: 370px;
+    height: 130px;
+  }
+
+  .score {
+    width: 230px;
+  }
+
+  .Nscore {
+    height: 115px;
+    width: 100px;
+  }
+
+  .footer {
+    top: 280px;
+  }
+
+  .header {
+    height: 200px;
+  }
+
+  .text {
+    margin-left: 10px;
+  }
+
+  .rock,
+  .paper,
+  .scissors {
+    font-size: 22px;
+  }
+
+  #btn {
+    right: 140px;
+    bottom: 50px;
+  }
+
+  #nextbtn {
+    bottom: 50px;
+  }
+
+  .footer2 {
+    gap: 146px;
+  }
+
+  .answertext {
+    left: 158px;
+    font-size: 8px;
+  }
+
+  .playbut {
+    height: 35px;
+    line-height: 34px;
+    text-align: center;
+    width: 140px;
+    left: 132px;
+    bottom: 48px;
+  }
+
+  .rules {
+    height: 260px;
+    width: 290px;
+    border: 6px solid white;
+    border-radius: 10px;
+    padding: 10px 5px;
+    right: 50px;
+    bottom: 100px;
+  }
+
+  .game-text {
+    font-size: 10px;
+  }
 }
