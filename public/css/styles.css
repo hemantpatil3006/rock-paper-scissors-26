@@ -160,9 +160,15 @@ body {
   bottom: 100px;
 }
 
-.blue { background-color: blue; }
-.orange { background-color: orange; }
-.purple { background-color: purple; }
+.blue {
+  background-color: blue;
+}
+.orange {
+  background-color: orange;
+}
+.purple {
+  background-color: purple;
+}
 
 .shape {
   height: 85px;
@@ -233,7 +239,9 @@ ul li::before {
 }
 
 /* Utility Classes */
-.hidden { display: none; }
+.hidden {
+  display: none;
+}
 
 button {
   height: 40px;
@@ -307,7 +315,7 @@ button {
 }
 
 #you-picked {
-  left: 510px;
+  left: 520px;
   position: fixed;
   bottom: 400px;
   text-transform: uppercase;
@@ -534,5 +542,26 @@ button {
 
   .game-text {
     font-size: 10px;
+  }
+
+  #you-picked {
+    left: 30px;
+    bottom: 480px;
+    font-weight: 1000;
+  }
+
+  #pc-picked {
+    left: 300px;
+    bottom: 480px;
+    font-weight: 1000;
+  }
+
+  .score-text {
+    font-size: 15px;
+  }
+
+  #cscore,
+  #mscore {
+    font-size: 40px;
   }
 }
