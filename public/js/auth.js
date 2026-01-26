@@ -1,8 +1,33 @@
-const API_URL = '/api/auth';
+// MOCK AUTHENTICATION using LocalStorage
+// This allows the app to work without a backend server (for Netlify/GitHub Pages)
+
+const SIMULATED_DELAY = 800; // ms to simulate network request
 
 document.addEventListener('DOMContentLoaded', () => {
     const registerForm = document.getElementById('registerForm');
     const loginForm = document.getElementById('loginForm');
+
+    // Helper functions for LocalStorage interactions
+    const getWeatherUsers = () => {
+        const users = localStorage.getItem('rps_users');
+        return users ? JSON.parse(users) : [];
+    };
+
+    const saveUser = (user) => {
+        const users = getWeatherUsers();
+        users.push(user);
+        localStorage.setItem('rps_users', JSON.stringify(users));
+    };
+
+    const findUser = (email) => {
+        const users = getWeatherUsers();
+        return users.find(u => u.email === email);
+    };
+
+    const checkPassword = (user, password) => {
+        // In a real app never store plan text passwords, but for this mock it's fine
+        return user.password === password; 
+    };
 
     if (registerForm) {
         registerForm.addEventListener('submit', async (e) => {
@@ -16,6 +41,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
 
+            // Simulate Network Delay
+            await new Promise(resolve => setTimeout(resolve, SIMULATED_DELAY));
+
             if (password !== confirmPassword) {
                 showToast('Passwords do not match', 'error');
                 submitBtn.disabled = false;
@@ -23,31 +51,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            try {
-                const response = await fetch(`${API_URL}/register`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username, email, password })
-                });
-
-                const data = await response.json();
-
-                if (response.ok) {
-                    showToast('Registration successful! Redirecting to login...', 'success');
-                    setTimeout(() => {
-                        window.location.href = 'login.html';
-                    }, 2000);
-                } else {
-                    showToast(data.message || 'Registration failed', 'error');
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Register';
-                }
-            } catch (error) {
-                console.error('Registration Error:', error);
-                showToast('An error occurred. Please try again.', 'error');
+            if (findUser(email)) {
+                showToast('User already exists', 'error');
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Register';
+                return;
             }
+
+            // Create new user
+            const newUser = {
+                id: Date.now().toString(),
+                username,
+                email,
+                password // Storing plain text for mock only
+            };
+
+            saveUser(newUser);
+
+            showToast('Registration successful! Redirecting to login...', 'success');
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 1500);
         });
     }
 
@@ -61,30 +85,29 @@ document.addEventListener('DOMContentLoaded', () => {
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
-            try {
-                const response = await fetch(`${API_URL}/login`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, password })
-                });
+             // Simulate Network Delay
+             await new Promise(resolve => setTimeout(resolve, SIMULATED_DELAY));
 
-                const data = await response.json();
+            const user = findUser(email);
 
-                if (response.ok) {
-                    localStorage.setItem('token', data.token);
-                    localStorage.setItem('username', data.username);
-                    showToast('Login successful! Redirecting...', 'success');
-                    setTimeout(() => {
-                        window.location.href = 'index.html';
-                    }, 1000);
-                } else {
-                    showToast(data.message || 'Login failed', 'error');
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Login';
-                }
-            } catch (error) {
-                console.error('Login Error:', error);
-                showToast('An error occurred. Please try again.', 'error');
+            if (user && checkPassword(user, password)) {
+                // Login Success
+                const token = 'mock_token_' + Date.now();
+                localStorage.setItem('token', token);
+                localStorage.setItem('username', user.username);
+                // Also store current user details if needed
+                localStorage.setItem('currentUser', JSON.stringify({
+                    id: user.id,
+                    username: user.username,
+                    email: user.email
+                }));
+
+                showToast('Login successful! Redirecting...', 'success');
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1000);
+            } else {
+                showToast('Invalid credentials', 'error');
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Login';
             }
@@ -97,6 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         logoutBtn.addEventListener('click', () => {
             localStorage.removeItem('token');
             localStorage.removeItem('username');
+            localStorage.removeItem('currentUser');
             showToast('Logged out successfully', 'success');
             setTimeout(() => {
                 window.location.href = 'login.html';
@@ -107,7 +131,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Auth Guard
 const checkAuth = async () => {
+    // Pages that don't require auth
     if (window.location.pathname.includes('login.html') || window.location.pathname.includes('register.html')) {
+        // If already logged in, redirect to index
+        if (localStorage.getItem('token')) {
+             window.location.href = 'index.html';
+        }
         return;
     }
 
@@ -117,28 +146,8 @@ const checkAuth = async () => {
         return;
     }
 
-    try {
-        const response = await fetch(`${API_URL}/me`, {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        });
-
-        if (response.ok) {
-            const user = await response.json();
-            // Authentication successful
-        } else {
-            // Token invalid or expired
-            localStorage.removeItem('token');
-            localStorage.removeItem('username');
-            window.location.href = 'login.html';
-        }
-    } catch (error) {
-        console.error('Auth check failed:', error);
-        // On network error, maybe don't redirect immediately, but for now strict auth:
-        // window.location.href = 'login.html'; 
-    }
+    // In a real app we would verify token with server here.
+    // For mock, we just assume if token exists, it's valid.
 };
 
 checkAuth();
