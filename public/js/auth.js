@@ -130,9 +130,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Auth Guard
+// Auth Guard
 const checkAuth = async () => {
-    // Pages that don't require auth
-    if (window.location.pathname.includes('login.html') || window.location.pathname.includes('register.html')) {
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+    const isPublicPage = loginForm || registerForm;
+
+    // Pages that don't require auth (Login/Register)
+    if (isPublicPage) {
         // If already logged in, redirect to index
         if (localStorage.getItem('token')) {
              window.location.href = 'index.html';
@@ -140,6 +145,7 @@ const checkAuth = async () => {
         return;
     }
 
+    // Protected Pages (Game Interface)
     const token = localStorage.getItem('token');
     if (!token) {
         window.location.href = 'login.html';
