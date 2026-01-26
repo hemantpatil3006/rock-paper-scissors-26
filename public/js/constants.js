@@ -1,4 +1,3 @@
-// src/js/constants.js
 export const GAME_CHOICES = {
   ROCK: 'rock',
   PAPER: 'paper',
@@ -21,6 +20,7 @@ export const DOM_IDS = {
   FOOTER: 'foot',
   LEFT_SECTION: 'leftd',
   RIGHT_SECTION: 'rightd',
+  RESULT_CONTAINER: 'ft2',
   RESULT_TEXT: 'winlosetext',
   PLAY_BTN: 'playbtn',
   NEXT_BTN: 'nextbtn',

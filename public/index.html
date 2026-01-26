@@ -5,7 +5,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="stylesheet" href="./css/base.css" />
+  <link rel="stylesheet" href="./css/layout.css" />
+  <link rel="stylesheet" href="./css/game.css" />
+  <link rel="stylesheet" href="./css/components.css" />
+  <link rel="stylesheet" href="./css/responsive.css" />
+  <link rel="stylesheet" href="./css/toast.css" />
+  <link rel="stylesheet" href="./css/logout.css" />
   <title>Rock Paper Scissor Game '26</title>
   <link rel="icon" type="image/x-icon" href="./assets/icons/scissor.png" />
 </head>
@@ -88,10 +94,9 @@
 
       <div class="answertext hidden" id="winlosetext">
         <h1 id="text1">YOU WIN</h1>
-        <h2 id="text2">&nbsp;Against PC</h2>
+        <h2 id="text2">AGAINST PC</h2>
+        <div id="playbtn" class="playbut">PLAY AGAIN</div>
       </div>
-
-      <div id="playbtn" class="playbut hidden">PLAY AGAIN</div>
 
       <div class="right hidden" id="rightd">
         <span id="pc-picked">PC PICKED</span>
@@ -136,22 +141,37 @@
     <div id="cross" class="shutdown">
       <img src="./assets/icons/cross.png" alt="X" />
     </div>
-    <div class="game-text">Game Rules</div>
-    <ul>
-      <li>Rock beats scissors, scissors beat paper, and paper beats rock.</li>
-      <li>Agree ahead of time whether you'll count off "rock, paper, scissors, shoot" or "rock, paper, scissors."</li>
-      <li>Use rock, paper, scissors to settle minor decisions or simply play to pass the time.</li>
-      <li>If both players lay down the same hand, each player lays down another hand.</li>
-    </ul>
+    <div class="rules-content">
+      <div class="game-text">Game Rules</div>
+      <ul>
+        <li>Rock beats scissors, scissors beat paper, and paper beats rock.</li>
+        <li>Agree ahead of time whether you'll count off "rock, paper, scissors, shoot" or "rock, paper, scissors."</li>
+        <li>Use rock, paper, scissors to settle minor decisions or simply play to pass the time.</li>
+        <li>If both players lay down the same hand, each player lays down another hand.</li>
+      </ul>
+    </div>
   </div>
 
-  <div class="button">
+  <div class="button-container">
     <button id="btn">RULES</button>
-  </div>
-  <div>
     <button class="hidden" id="nextbtn">NEXT</button>
   </div>
 
+  <div class="logout-container">
+    <div id="logoutBtn" class="logout-icon" title="Logout">
+      <!-- Simple Logout Icon SVG -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+        <polyline points="16 17 21 12 16 7"></polyline>
+        <line x1="21" y1="12" x2="9" y2="12"></line>
+      </svg>
+    </div>
+  </div>
+
+
+  <div id="toast-container"></div>
+  <script src="./js/toast.js"></script>
+  <script src="./js/auth.js"></script>
   <script type="module" src="./js/main.js"></script>
 </body>
 </html>

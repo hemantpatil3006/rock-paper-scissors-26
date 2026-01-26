@@ -1,4 +1,3 @@
-// src/js/main.js
 import { GAME_CHOICES } from './constants.js';
 import { gameState, loadScores } from './state.js';
 import { cacheDOM, domElements } from './dom.js';

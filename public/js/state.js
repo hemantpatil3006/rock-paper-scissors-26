@@ -1,4 +1,3 @@
-// src/js/state.js
 import { STORAGE_KEYS } from './constants.js';
 
 export const gameState = {

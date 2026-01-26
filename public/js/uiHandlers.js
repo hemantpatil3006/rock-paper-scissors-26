@@ -44,6 +44,7 @@ export function resetGameDisplay() {
   hide(domElements.resultText);
   hide(domElements.playBtn);
   show(domElements.footer);
+  hide(domElements.resultContainer);
   hide(domElements.left);
   hide(domElements.right);
 
@@ -54,6 +55,7 @@ export function showResultScreen() {
   hide(domElements.footer);
   show(domElements.resultText);
   show(domElements.playBtn);
+  show(domElements.resultContainer);
   show(domElements.left);
   show(domElements.right);
 

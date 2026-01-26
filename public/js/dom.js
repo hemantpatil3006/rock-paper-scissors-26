@@ -19,6 +19,7 @@ export function cacheDOM() {
   domElements.footer = document.getElementById(DOM_IDS.FOOTER);
   domElements.left = document.getElementById(DOM_IDS.LEFT_SECTION);
   domElements.right = document.getElementById(DOM_IDS.RIGHT_SECTION);
+  domElements.resultContainer = document.getElementById(DOM_IDS.RESULT_CONTAINER);
   domElements.resultText = document.getElementById(DOM_IDS.RESULT_TEXT);
   domElements.playBtn = document.getElementById(DOM_IDS.PLAY_BTN);
   domElements.nextBtn = document.getElementById(DOM_IDS.NEXT_BTN);

@@ -1,0 +1,185 @@
+/* Buttons */
+button {
+  height: 40px;
+  width: 95px;
+  font-size: 22px;
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 2px;
+}
+
+.button-container {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  gap: 20px;
+  z-index: 10000;
+}
+
+#nextbtn, #btn {
+  position: relative;
+  bottom: auto;
+  right: auto;
+}
+
+
+/* Play Again Button (Small) */
+.playbut {
+  height: 44px;
+  line-height: 44px;
+  width: 160px;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: var(--font-score);
+  color: #6B6B6B;
+  background-color: white;
+  border-radius: 9px;
+  cursor: pointer;
+  text-transform: uppercase;
+  border: none;
+  transition: transform 0.2s;
+  text-align: center; /* Ensures text is centered */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.playbut:hover {
+  transform: scale(1.05);
+}
+
+
+/* Play Again Button (Big/Celebration) */
+.play-again {
+    position: relative;
+    margin-top: 20px;
+    z-index: 150;
+    text-decoration: none;
+    color: grey;
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: var(--font-score);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    align-self: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.play-again:hover {
+    background-color: #f0f0f0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.play-again a {
+    text-decoration: none !important;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Rules Modal */
+.rules {
+  /* max-height: 80vh;  Removed to allow content container to handle scroll */
+  width: 320px;
+  background-color: var(--color-rules-bg);
+  color: white;
+  border: 8px solid white;
+  border-radius: 10px;
+  padding: 20px;
+  position: fixed;
+  right: 50px;
+  bottom: 80px;
+  z-index: 9999;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  /* overflow-y: auto; Removed to allow close button to be visible */
+}
+
+
+.rules ul {
+  list-style-type: square;
+}
+
+.rules ul li {
+  margin-bottom: 12px;
+}
+
+.rules ul li::before {
+  content: "\2022";
+  color: yellow;
+  font-weight: bold;
+  display: inline-block;
+  width: 1.5em;
+  margin-left: -1em;
+  list-style-position: inside;
+}
+
+.game-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-family: var(--font-rules);
+}
+
+.shutdown {
+  height: 44px;
+  width: 44px;
+  background-color: #ff0000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  z-index: 10100;
+  cursor: pointer;
+  border: 4px solid white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.shutdown::before,
+.shutdown::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 4px;
+  background-color: white;
+  border-radius: 2px;
+}
+
+.shutdown::before {
+  transform: rotate(45deg);
+}
+
+.shutdown::after {
+  transform: rotate(-45deg);
+}
+
+.shutdown img {
+  display: none; /* Use CSS cross instead */
+}
+
+/* New container for rules content to handle scrolling */
+.rules-content {
+  max-height: 70vh; /* Constrain height here */
+  overflow-y: auto;
+  padding-right: 5px; /* Add some padding for scrollbar */
+}
+
+

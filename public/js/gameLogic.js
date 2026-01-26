@@ -1,4 +1,3 @@
-// src/js/gameLogic.js
 import { GAME_CHOICES } from './constants.js';
 
 export function getComputerChoice() {
