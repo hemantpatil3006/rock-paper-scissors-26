@@ -122,7 +122,7 @@
 
     /* Result Screen / Winner Fixes */
     .footer2 {
-      top: 160px; /* Move up significantly to avoid bottom buttons */
+      top: 180px; /* Move up significantly to avoid bottom buttons */
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: center;
@@ -155,7 +155,7 @@
     .rules {
       width: 85%;
       right: 7.5%; /* Center it */
-      bottom: 120px;
+      bottom: 80px;
     }
 
     /* Win Celebration Page */
