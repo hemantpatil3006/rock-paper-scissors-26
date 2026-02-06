@@ -77,3 +77,19 @@ body {
 .auth-container a:hover {
     text-decoration: underline;
 }
+
+.disclaimer {
+    margin-top: 1.5rem;
+    padding: 0.75rem;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    color: #6c757d;
+    text-align: center;
+    line-height: 1.4;
+    font-size: 0.85rem;
+}
+
+.disclaimer strong {
+    color: #495057;
+}
