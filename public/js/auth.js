@@ -1,6 +1,3 @@
-// MOCK AUTHENTICATION using LocalStorage
-// This allows the app to work without a backend server (for Netlify/GitHub Pages)
-
 const SIMULATED_DELAY = 800; // ms to simulate network request
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -25,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const checkPassword = (user, password) => {
-        // In a real app never store plan text passwords, but for this mock it's fine
         return user.password === password; 
     };
 
@@ -41,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
 
-            // Simulate Network Delay
             await new Promise(resolve => setTimeout(resolve, SIMULATED_DELAY));
 
             if (password !== confirmPassword) {
@@ -63,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 id: Date.now().toString(),
                 username,
                 email,
-                password // Storing plain text for mock only
+                password
             };
 
             saveUser(newUser);
