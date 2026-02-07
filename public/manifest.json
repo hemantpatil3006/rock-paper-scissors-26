@@ -1,7 +1,7 @@
 ﻿{
   "short_name": "RPS Game",
   "name": "Rock Paper Scissors - Professional Edition",
-  "description": "A high-quality Rock-Paper-Scissors game with user-specific scoring.",
+  "description": "An educational Rock-Paper-Scissors game project demonstrating front-end development and local storage authentication.",
   "start_url": "/index.html",
   "display": "standalone",
   "theme_color": "#27ae60",

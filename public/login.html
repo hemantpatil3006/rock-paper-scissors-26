@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Rock Paper Scissors</title>
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;">
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/auth.css">
     <link rel="stylesheet" href="./css/toast.css">
@@ -12,6 +14,8 @@
 
 <body>
     <div class="auth-container">
+        <div class="edu-badge">Educational Project</div>
+        <a href="index.html" class="back-link">← Back to Game</a>
         <h1>Login</h1>
         <form id="loginForm">
             <div class="form-group">
@@ -26,8 +30,8 @@
         </form>
         <p>Don't have an account? <a href="register.html">Register here</a></p>
         <div class="disclaimer">
-            <small><strong>Note:</strong> This is an educational project. Authentication is simulated locally. No real
-                data is stored or sent to any server.</small>
+            <p><strong>Security Note:</strong> This is a front-end educational project. All authentication is handled
+                locally within your browser using localStorage. No sensitive data is transmitted to any server.</p>
         </div>
     </div>
 

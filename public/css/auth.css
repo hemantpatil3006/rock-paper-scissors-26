@@ -93,3 +93,28 @@ body {
 .disclaimer strong {
     color: #495057;
 }
+
+.edu-badge {
+    background: #e9f7ef;
+    color: #27ae60;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 1rem;
+    border: 1px solid #27ae60;
+}
+
+.back-link {
+    display: block;
+    text-align: left;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
