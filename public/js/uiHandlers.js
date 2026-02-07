@@ -1,4 +1,3 @@
-// src/js/uiHandlers.js
 import { CSS_CLASSES, GAME_CHOICES } from './constants.js';
 import { gameState, saveScores } from './state.js';
 import { domElements, hide, show } from './dom.js';

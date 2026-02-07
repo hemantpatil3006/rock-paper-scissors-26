@@ -1,4 +1,3 @@
-// src/js/dom.js
 import { DOM_IDS, CSS_CLASSES } from './constants.js';
 
 export const domElements = {};

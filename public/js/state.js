@@ -6,7 +6,6 @@ export const gameState = {
   isGameRunning: false
 };
 
-// Helper to get user-specific key
 function getStorageKey(key) {
   try {
     const userStr = localStorage.getItem('currentUser');
@@ -17,7 +16,6 @@ function getStorageKey(key) {
       }
     }
   } catch (e) {
-    // Fallback to global key if JSON parse fails
   }
   return key;
 }
@@ -42,7 +40,6 @@ export function loadScores() {
       gameState.pcScore = 0; // Reset if no score found for this user
     }
   } catch (err) {
-    // Silent fail
   }
 }
 
@@ -54,6 +51,5 @@ export function saveScores() {
     localStorage.setItem(userKey, gameState.userScore);
     localStorage.setItem(pcKey, gameState.pcScore);
   } catch (err) {
-    // Silent fail
   }
 }

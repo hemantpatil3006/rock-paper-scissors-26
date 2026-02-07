@@ -1,13 +1,1 @@
-{
-  "name": "rock-paper-scissors-26",
-  "version": "1.0.0",
-  "description": "Rock Paper Scissors Game with Auth",
-  "main": "server.js",
-  "scripts": {
-    "start": "npx serve public"
-  },
-  "dependencies": {
-  },
-  "devDependencies": {
-  }
-}
+{"name": "rock-paper-scissors","version": "1.0.0","scripts": {"start": "npx serve public"}}

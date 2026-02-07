@@ -6,7 +6,6 @@ const showToast = (message, type = 'info') => {
 
     toastContainer.appendChild(toast);
 
-    // Trigger reflow
     void toast.offsetWidth;
 
     toast.classList.add('show');
