@@ -27,6 +27,7 @@ export function cacheDOM() {
   domElements.rulesBtn = document.getElementById(DOM_IDS.RULES_BTN);
   domElements.rulesDialog = document.getElementById(DOM_IDS.RULES_DIALOG);
   domElements.rulesClose = document.getElementById(DOM_IDS.RULES_CLOSE);
+  domElements.modalBackdrop = document.getElementById(DOM_IDS.MODAL_BACKDROP);
   domElements.resultTitle = document.getElementById('text1');
   domElements.playAgainLink = document.getElementById('playagain');
   domElements.userScoreDisplay = document.getElementById('mscore');

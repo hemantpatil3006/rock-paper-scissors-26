@@ -4,12 +4,23 @@ import { domElements, hide, show } from './dom.js';
 import { getComputerChoice, determineWinner } from './gameLogic.js';
 
 export function updateScoreDisplay() {
-  if (domElements.userScoreDisplay) {
-    domElements.userScoreDisplay.textContent = gameState.userScore;
-  }
-  if (domElements.pcScoreDisplay) {
-    domElements.pcScoreDisplay.textContent = gameState.pcScore;
-  }
+  const animateScore = (element, score) => {
+    if (!element) return;
+    if (element.textContent !== score.toString()) {
+      element.textContent = score;
+      element.classList.remove(CSS_CLASSES.SCORE_POP);
+      void element.offsetWidth; // Trigger reflow
+      element.classList.add(CSS_CLASSES.SCORE_POP);
+      
+      // Remove class after animation finishes
+      setTimeout(() => {
+        element.classList.remove(CSS_CLASSES.SCORE_POP);
+      }, 400);
+    }
+  };
+
+  animateScore(domElements.userScoreDisplay, gameState.userScore);
+  animateScore(domElements.pcScoreDisplay, gameState.pcScore);
 }
 
 function updateUserScore(newScore) {
@@ -38,6 +49,7 @@ export function resetGameDisplay() {
     if (!circle) return;
     circle.classList.add(CSS_CLASSES.HIDDEN);
     circle.classList.remove(CSS_CLASSES.WINNER_GLOW);
+    circle.classList.remove(CSS_CLASSES.POP_IN);
   });
 
   hide(domElements.resultText);
@@ -57,6 +69,11 @@ export function showResultScreen() {
   show(domElements.resultContainer);
   show(domElements.left);
   show(domElements.right);
+
+  // Add pop-in animation to the result sections
+  domElements.left?.classList.add(CSS_CLASSES.POP_IN);
+  domElements.right?.classList.add(CSS_CLASSES.POP_IN);
+  domElements.resultText?.classList.add(CSS_CLASSES.FADE_IN);
 
   gameState.isGameRunning = true;
 }
@@ -185,11 +202,13 @@ export function updateRulesButtonPosition() {
 }
 
 export function showRulesDialog() {
-  show(domElements.rulesDialog);
+  domElements.rulesDialog?.classList.add(CSS_CLASSES.SHOW);
+  domElements.modalBackdrop?.classList.add(CSS_CLASSES.SHOW);
 }
 
 export function closeRulesDialog() {
-  hide(domElements.rulesDialog);
+  domElements.rulesDialog?.classList.remove(CSS_CLASSES.SHOW);
+  domElements.modalBackdrop?.classList.remove(CSS_CLASSES.SHOW);
 }
 
 export function showCelebrationScreen() {

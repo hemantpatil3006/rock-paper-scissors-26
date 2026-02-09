@@ -16,6 +16,10 @@ function setupEventListeners() {
   domElements.rulesBtn?.addEventListener('click', showRulesDialog);
   domElements.rulesClose?.addEventListener('click', closeRulesDialog);
 
+  if (domElements.modalBackdrop) {
+    domElements.modalBackdrop.addEventListener('click', closeRulesDialog);
+  }
+
   domElements.playBtn?.addEventListener('click', resetGameDisplay);
   domElements.nextBtn?.addEventListener('click', showCelebrationScreen);
 

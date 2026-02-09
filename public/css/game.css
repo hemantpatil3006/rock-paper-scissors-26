@@ -1,8 +1,10 @@
 /* Game Choices Text */
 .rock, .paper, .scissors {
-  font-size: 25px;
-  font-weight: bold;
+  font-size: 32px;
+  font-weight: 700;
   color: white;
+  letter-spacing: 3px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Score Text */
@@ -10,16 +12,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  font-size: 19px;
+  justify-content: center;
+  font-size: 16px;
   font-family: var(--font-score);
-  color: grey;
+  color: #252525;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  line-height: 1.2;
 }
 
 #cscore, #mscore {
-  font-size: 58px;
-  font-weight: bold;
+  font-size: 64px;
+  font-weight: 800;
   font-family: var(--font-score);
+  color: #252525;
+  margin: 5px 0;
 }
 
 /* Lines connecting choices */
@@ -28,7 +35,7 @@
     position: absolute;
     top: 50px;
     left: 60px;
-    border-bottom: 10px solid rgb(81, 83, 83);
+    border-bottom: 15px solid rgba(0, 0, 0, 0.6);
     transform: rotate(0deg);
     transform-origin: left;
 }
@@ -38,7 +45,7 @@
     position: absolute;
     top: 50px;
     left: 80px;
-    border-bottom: 10px solid rgb(81, 83, 83);
+    border-bottom: 15px solid rgba(0, 0, 0, 0.6);
     transform: rotate(-60deg);
     transform-origin: right;
 }
@@ -48,7 +55,7 @@
     position: absolute;
     top: 50px;
     left: 40px;
-    border-bottom: 10px solid rgb(81, 83, 83);
+    border-bottom: 15px solid rgba(0, 0, 0, 0.6);
     transform: rotate(55deg);
     transform-origin: left;
 }
@@ -153,21 +160,32 @@
 
 
 
-/* Winner Effect */
+/* Winner Celebration Effect - Modern Triple Pulse */
 .rounded-gradient-borders {
-    width: 110px;
-    height: 110px;
-    border: double 10px transparent;
-    border-radius: 50%;
-    background-image: linear-gradient(white, white),
-      radial-gradient(circle at top left, #f00, #3020ff);
-    background-origin: border-box;
-    background-clip: content-box, border-box;
-    box-shadow: 0 0 40px 25px rgba(76, 175, 80, 0.7),
-      0 0 20px 10px rgba(76, 175, 80, 0.5), 0 10px 20px rgba(0, 0, 0, 0.19),
-      0 6px 6px rgba(0, 0, 0, 0.23);
     position: relative;
     z-index: 100;
+    box-shadow: 0 0 0 25px rgba(255, 255, 255, 0.07),
+                0 0 0 50px rgba(255, 255, 255, 0.04),
+                0 0 0 80px rgba(255, 255, 255, 0.02);
+    animation: winnerPulse 2s infinite ease-out;
+}
+
+@keyframes winnerPulse {
+    0% {
+        box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.08),
+                    0 0 0 45px rgba(255, 255, 255, 0.05),
+                    0 0 0 75px rgba(255, 255, 255, 0.02);
+    }
+    50% {
+        box-shadow: 0 0 0 35px rgba(255, 255, 255, 0.12),
+                    0 0 0 70px rgba(255, 255, 255, 0.08),
+                    0 0 0 110px rgba(255, 255, 255, 0.04);
+    }
+    100% {
+        box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.08),
+                    0 0 0 45px rgba(255, 255, 255, 0.05),
+                    0 0 0 75px rgba(255, 255, 255, 0.02);
+    }
 }
 
 /* Winner Celebration Screen (Container 2) */

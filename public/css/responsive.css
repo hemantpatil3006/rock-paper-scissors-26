@@ -6,6 +6,9 @@
     }
   
     /* Header / Scoreboard Fixes */
+    .header {
+        top: 10px;
+    }
     .element-container {
       width: 92%; /* Fluid width */
       max-width: 450px;
@@ -48,15 +51,25 @@
     }
   
     .button-container {
-      bottom: 20px;
+      bottom: 25px;
       right: 20px;
-      gap: 15px;
+      gap: 12px;
+      width: calc(100% - 40px);
+      justify-content: flex-end;
+    }
+
+    button {
+      height: 44px;
+      width: 105px;
+      font-size: 14px;
+      border-radius: 10px;
+      letter-spacing: 1.5px;
     }
 
     /* Game Area / Triangle Fixes */
     /* Game Area / Triangle Fixes */
     .footer {
-      top: 220px;
+      top: 280px;
       width: 260px; /* Lock width to match content (100+60+100) */
       left: 50%;
       transform: translateX(-50%) scale(0.9); /* Center horizontally and scale */
@@ -97,6 +110,7 @@
         width: 160px;
         top: 45px;
         left: 50px;
+        border-bottom: 10px solid rgba(0, 0, 0, 0.6);
         transform: rotate(0deg);
         transform-origin: left;
     }
@@ -107,6 +121,7 @@
         top: 45px;
         left: auto;
         right: 50px;
+        border-bottom: 10px solid rgba(0, 0, 0, 0.6);
         transform: rotate(-58deg);
         transform-origin: right;
     }
@@ -116,13 +131,14 @@
         width: 153px;
         top: 45px;
         left: 50px;
+        border-bottom: 10px solid rgba(0, 0, 0, 0.6);
         transform: rotate(58deg);
         transform-origin: left;
     }
 
     /* Result Screen / Winner Fixes */
     .footer2 {
-      top: 180px; /* Move up significantly to avoid bottom buttons */
+      top: 240px; /* Move up significantly to avoid bottom buttons */
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: center;

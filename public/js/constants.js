@@ -28,7 +28,8 @@ export const DOM_IDS = {
   CONT2: 'cont2',
   RULES_BTN: 'btn',
   RULES_DIALOG: 'rule',
-  RULES_CLOSE: 'cross'
+  RULES_CLOSE: 'cross',
+  MODAL_BACKDROP: 'modalBackdrop'
 };
 
 export const STORAGE_KEYS = {
@@ -38,5 +39,9 @@ export const STORAGE_KEYS = {
 
 export const CSS_CLASSES = {
   HIDDEN: 'hidden',
-  WINNER_GLOW: 'rounded-gradient-borders'
+  WINNER_GLOW: 'rounded-gradient-borders',
+  SCORE_POP: 'score-pop',
+  POP_IN: 'pop-in',
+  FADE_IN: 'fade-in',
+  SHOW: 'show'
 };
