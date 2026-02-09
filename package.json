@@ -7,6 +7,5 @@
     "start": "npx serve public"
   },
   "dependencies": {
-    "bcryptjs": "^3.0.3"
   }
 }

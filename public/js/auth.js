@@ -144,7 +144,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Auth Guard
-// Auth Guard
 const checkAuth = async () => {
     const loginForm = document.getElementById('loginForm');
     const registerForm = document.getElementById('registerForm');
