@@ -1,5 +1,18 @@
 const SIMULATED_DELAY = 800; // ms to simulate network request
 
+// Simple hash function for password encryption (browser-compatible)
+function simpleHash(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+        const char = str.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash; // Convert to 32bit integer
+    }
+    // Convert to hex string
+    return Math.abs(hash).toString(16).padStart(8, '0') + 
+           str.length.toString(16).padStart(4, '0');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const registerForm = document.getElementById('registerForm');
     const loginForm = document.getElementById('loginForm');
@@ -21,8 +34,13 @@ document.addEventListener('DOMContentLoaded', () => {
         return users.find(u => u.email === email);
     };
 
+    const hashPassword = (password) => {
+        return simpleHash(password);
+    };
+
     const checkPassword = (user, password) => {
-        return user.password === password; 
+        const hashedInput = simpleHash(password);
+        return user.password === hashedInput;
     };
 
     if (registerForm) {
@@ -53,12 +71,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Create new user
+            // Create new user with hashed password
+            const hashedPassword = hashPassword(password);
             const newUser = {
                 id: Date.now().toString(),
                 username,
                 email,
-                password
+                password: hashedPassword
             };
 
             saveUser(newUser);
